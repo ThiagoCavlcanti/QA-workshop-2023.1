@@ -38,7 +38,7 @@ describe('Preenche de forma incorreta e correta os campos de login', () => {
 
     })
 
-    it.only('Preenche o cmapo de senha errado três vezes e depois tenta logar corretamente', () => {
+    /* it.only('Preenche o cmapo de senha errado três vezes e depois tenta logar corretamente', () => {
 
         Cypress._.times(3, (k) => {
             cy.get('input[formcontrolname="userName"]').
@@ -61,8 +61,20 @@ describe('Preenche de forma incorreta e correta os campos de login', () => {
 
         cy.get('.btn').
         click()
+    }) */
+
+    it('Preenche os campos de usuário e senha corretamente',() => {
+        cy.get('input[formcontrolname="userName"]').
+        type('tester')
+
+        cy.get('input[formcontrolname="password"]').
+        type('teste123')
+
+        cy.get('.btn').
+        click()
+
+        cy.contains('a','Logout').
+        should('be.visible')
     })
         
-
-
 })
